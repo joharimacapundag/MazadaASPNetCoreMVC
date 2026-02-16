@@ -1,0 +1,61 @@
+@{
+  ViewData["Title"] = "Seller";
+}
+<!-- seller registration form -->
+<div class="container-fluid">
+  <h2>Seller Registration Form</h2>
+
+  <form id="seller-form" method="post" asp-controller="seller" asp-action="register">
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address</label>
+      <input autocomplete="off" name="email" type="email" class="form-control" id="email"
+             placeholder="Your email address..." required />
+      <div id="email-error" class="text-danger mt-1 error"></div>
+    </div>
+
+    <!-- Contact Number -->
+    <div class="mb-3">
+      <label for="contact-number" class="form-label">Contact Number</label>
+      <input autocomplete="off" name="contact-number" type="tel" id="contact-number" class="form-control"
+             placeholder="+639XXXXXXXXX" required pattern="\+639[0-9]{9}" minlength="13" maxlength="13" />
+      <div id="contact-number-error" class="text-danger mt-1 error"></div>
+    </div>
+
+    <!-- Shop Name -->
+    <div class="mb-3">
+      <label for="shop-name" class="form-label">Shop Name</label>
+      <input autocomplete="off" name="shop-name" type="text" class="form-control" id="shop-name"
+             placeholder="Your shop name..." required pattern="[A-Za-z0-9\s'-]{3,50}" minlength="3" maxlength="50" />
+      <div id="shop-name-error" class="text-danger mt-1 error"></div>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="register-btn">Register</button>
+
+  </form>
+</div>
+
+
+<!-- success modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <h5 class="modal-title w-100" id="successModalLabel">Registration Successful</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Your seller registration was submitted successfully!
+      </div>
+      <div class="modal-footer border-0 justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+@section Scripts {
+  <script src="~/js/seller/seller.js"></script>
+}

@@ -1,0 +1,56 @@
+@model Mazada.Models.CartItemViewModel[]
+@{
+    ViewData["Title"] = "Cart";
+    
+}
+<div class="container my-5">
+    <h2 class="mb-4">Shopping Cart</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>  
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ decimal totalPrice = 0;}
+                @if (Model != null && Model.Length > 0)
+                {
+                    foreach (var row in Model)
+                    {
+                        <tr id="row-@row.Id"> 
+                            <td>@row.Id</td>
+                            <td>@row.ProductName</td>
+                            <td class="text-muted">@row.ProductShortDescription</td>
+                            <td id="row-product-price-@row.Id" data-product-price="@row.ProductPrice">@row.ProductPrice.ToString("C")</td>
+                            <td style="max-width:120px;">
+                                <input type="number" class="form-control" id="row-quantity-@row.Id"
+                                       value="@row.Quantity" min="1" max="@row.ProductStocks" onchange="onChange(@row.Id)">
+                            </td>
+                            <td id="row-total-price-@row.Id" class="row-total-price"  data-row-total-price="@row.TotalPrice" >@row.TotalPrice.ToString("C")</td>
+                            <td>
+                                <a class="btn btn-outline-danger btn-sm row-remove-btn"  data-id="@row.Id" asp-controller="cartremove" asp-action="remove" asp-route-id="@row.Id">Remove</a>
+                            </td>
+                        </tr>
+
+                        totalPrice += row.TotalPrice;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-end mt-3">
+        <h4>Total: <span id="total-price">@totalPrice.ToString("C")</span></h4>
+    </div>
+</div>
+@section Scripts {
+  <script src="~/js/cart/cart.js"></script>
+}

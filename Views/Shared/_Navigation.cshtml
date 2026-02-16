@@ -1,0 +1,71 @@
+@using Microsoft.IdentityModel.Tokens
+@{
+    var user = Context.Request.Cookies["user_id"];
+    var seller = Context.Request.Cookies["seller_id"];
+}
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="index">Mazada</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="home" asp-action="index">Home</a>
+                    </li>
+                    <!-- Check if user is a seller or not -->
+                    @if(seller == null)
+                    {
+                        <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="seller" asp-action="seller">Be a
+                            seller!
+                        </a>
+                        </li>
+                    }
+                    @if(seller != null ){
+                        <li class="nav-item">
+                             <a class="nav-link text-dark" asp-area="" asp-controller="sell" asp-action="sell">Sell now!</a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link text-dark" asp-area="" asp-controller="shop" asp-action="shop" id="shop-btn">Your shop</a>
+                        </li>
+                    }
+                    <!-- Check if user is log on or not -->
+                    @if (user.IsNullOrEmpty())
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="login" asp-action="login">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="register" asp-action="register">Sign
+                                    Up
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="logout" asp-action="logout" id="logout-btn">Logout</a>
+                        </li>
+                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link text-dark position-relative"  asp-area="" asp-controller="cart" asp-action="cart">
+                            Cart @await Component.InvokeAsync("CartBadge") 
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex" method="get" asp-controller="search" asp-action="search" id="search-form">
+                    <input class="form-control me-2" type="search" name="query" placeholder="Search..."
+                        aria-label="Search">
+                    <button id="search-btn" class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+

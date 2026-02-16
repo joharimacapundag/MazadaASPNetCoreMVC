@@ -1,0 +1,65 @@
+@model Mazada.Models.CategoryViewModel[]
+@{
+    ViewData["Title"] = "Sell";
+}
+
+<div class="container mt-5">
+    <h2>Add Product</h2>
+    <form id="sell-form" method="post" enctype="multipart/form-data" asp-controller="sell" asp-action="product">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input id="name" name="name" class="form-control" placeholder="Enter product name" required />
+            <div id="name-error" class="text-danger mt-1 error"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="short_description" class="form-label">Short Description</label>
+            <input id="short_description" name="short_description" class="form-control" placeholder="Brief description"
+                   required />
+            <div id="short_description-error" class="text-danger mt-1 error"> </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="long_description" class="form-label">Long Description</label>
+            <textarea id="long_description" name="long_description" class="form-control" rows="4"
+                      placeholder="Detailed description" required></textarea>
+            <div id="long_description-error" class="text-danger mt-1 error"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input id="price" name="price" type="number" step="0.01" class="form-control" placeholder="0.00" required />
+            <div id="price-error" class="text-danger mt-1 error"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="stocks" class="form-label">Stocks</label>
+            <input id="stocks" name="stocks" type="number" class="form-control" placeholder="0" />
+            <div id="stocks-error" class="text-danger mt-1 error"></div>
+        </div>
+
+        <div class="mb-3">
+            
+            <select class="form-select" name="categories" aria-label="Default select example" multiple >
+                <option selected value="">Category</option>
+                @foreach(var category in Model){
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+            <div id="category-error" class="text-danger mt-1 error"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image_path" class="form-label">Product Image</label>
+            <input id="image_path" name="image_path" type="file" class="form-control" />
+            <div id="image_path-error" class="text-danger mt-1 error"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" id="add-product-btn">Add Product</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/sell/sell.js"></script>
+}

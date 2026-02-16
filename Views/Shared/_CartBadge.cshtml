@@ -1,0 +1,5 @@
+@model int
+<span id="cart-count" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger"
+      style="display: @(Model > 0 ? "inline-block" : "none");">
+    @Model
+</span>

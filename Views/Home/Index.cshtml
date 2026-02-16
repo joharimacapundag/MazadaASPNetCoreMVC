@@ -1,0 +1,55 @@
+﻿@model Mazada.Models.HomeViewModel
+@{
+    ViewData["Title"] = "Featured";
+}
+
+<!-- Check if the model and is not null -->
+@if (Model?.SectionViewModels != null)
+{   
+    // Iterate sections from home view model then the featured products
+    foreach (var sectionViewModel in Model.SectionViewModels)
+    {
+        <div class="product-group mb-5">
+            <h2 class="section-title text-center mb-4">@sectionViewModel.Name</h2>
+            <div class="row g-3 justify-content-center">
+                @foreach (var featuredProductViewModel in sectionViewModel.FeaturedProductViewModels!)
+                {
+                    <partial name="_ProductCard" model="featuredProductViewModel"/>
+                }
+            </div>
+        </div>
+    }
+}
+
+<style>
+    /* Hover effect for card */
+    .hover-card {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Make entire card clickable pointer */
+    a .card {
+        cursor: pointer;
+    }
+
+    /* Ensure all cards have the same height inside row */
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-title {
+        margin-bottom: 0.5rem;
+    }
+</style>

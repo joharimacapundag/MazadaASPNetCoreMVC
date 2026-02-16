@@ -1,0 +1,16 @@
+@model Mazada.Models.IProductViewModel[]
+@{
+    ViewData["Title"] = "Search";
+}
+
+<div class="container py-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <!-- iterate the products-->
+        @foreach(var product in Model)
+        {
+            <partial name="_ProductCard" model="product"/>
+        }
+        
+    </div>
+</div>

@@ -1,0 +1,82 @@
+@model Mazada.Models.Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container py-5">
+    <div class="row g-5"> <div class="col-md-6 col-lg-5">
+            <div class="card border-0 shadow-sm overflow-hidden">
+                <img src="@Model.ImagePath" 
+                     class="img-fluid object-fit-cover" 
+                     style="width: 100%; height: 450px;" 
+                     alt="@Model.Name" 
+                     onerror="this.onerror=null; this.src='/uploads/no_image.png';">
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-7">
+            <div class="ps-md-4">
+                <nav aria-label="breadcrumb" class="mb-2">
+                    <ol class="breadcrumb mb-0 small">
+                        <li class="breadcrumb-item active">Product Details</li>
+                    </ol>
+                </nav>
+
+                <h1 class="fw-bold display-6 mb-2">@Model.Name</h1>
+
+                <div class="d-flex align-items-center mb-3">
+                    <div class="text-warning small me-2">
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </div>
+                    <span class="text-muted small">(120 Reviews)</span>
+                </div>
+
+                <div class="mb-4">
+                    <span class="fs-2 fw-bold text-dark">@Model.Price.ToString("C")</span>
+                </div>
+
+                <div class="mb-4 border-top pt-4">
+                    <h6 class="text-uppercase fw-bold small text-muted">Description</h6>
+                    <p class="text-secondary lh-base">@Model.ShortDescription</p>
+                </div>
+
+                <div class="mb-4">
+                    <span class="badge @(Model.Stocks > 0 ? "bg-success-subtle text-success" : "bg-danger-subtle text-danger") px-3 py-2 rounded-pill">
+                        @(Model.Stocks > 0 ? $"In Stock: {Model.Stocks} items left" : "Out of stock")
+                    </span>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold small">Quantity</label>
+                    <div class="input-group" style="max-width: 140px;">
+                        <button class="btn btn-outline-dark" type="button" id="minus-btn"><i class="bi bi-dash"></i></button>
+                        <input type="number" class="form-control text-center border-dark" id="quantity" value="1" min="1" max="@Model.Stocks">
+                        <button class="btn btn-outline-dark" type="button" id="plus-btn"><i class="bi bi-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a class="btn btn-outline-dark btn-lg flex-grow-1 py-3 px-4" id="add-to-cart-btn" 
+                       asp-controller="productcart" asp-action="cart" asp-route-id="@Model.Id" asp-route-quantity="__QUANTITY__">
+                        <i class="bi bi-cart3 me-2"></i> Add to Cart
+                    </a>
+                    <a class="btn btn-primary btn-lg flex-grow-1 py-3 px-4 shadow-sm fw-bold" id="buy-btn" 
+                       asp-controller="productbuy" asp-action="buy" asp-route-id="@Model.Id" asp-route-quantity="__QUANTITY__">
+                        Buy Now
+                    </a>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="~/js/product/details.js"></script>
+}
