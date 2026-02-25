@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mazada")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93aa0f8e6cc99372770ba8ccf424bdcde2d94d1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mazada")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mazada")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

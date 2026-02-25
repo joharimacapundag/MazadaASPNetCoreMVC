@@ -371,7 +371,8 @@ E:\Mazada\Mazada\obj\Debug\net10.0\compressed\ui2edrl7ax-{0}-6toccjz3ug-6toccjz3
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\dkkx8cwkph-{0}-1ywps5h250-1ywps5h250.gz
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\zouzerip91-{0}-ra4gqltn7m-ra4gqltn7m.gz
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\fxf8pjc6lw-{0}-tp38dk4vlk-tp38dk4vlk.gz
-E:\Mazada\Mazada\obj\Debug\net10.0\compressed\yx3pq88wd2-{0}-s99cny58oh-s99cny58oh.gz
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\dnf3kgrhdl-{0}-0cdxp9ccqk-0cdxp9ccqk.gz
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\wv5mitbthy-{0}-ka5qwruenh-ka5qwruenh.gz
 E:\Mazada\Mazada\obj\Debug\net10.0\compressed\bvnvnpy74o-{0}-z871n281fn-z871n281fn.gz
+E:\Mazada\Mazada\obj\Debug\net10.0\Mazada.sourcelink.json
+E:\Mazada\Mazada\obj\Debug\net10.0\compressed\yx3pq88wd2-{0}-rryw7ojews-rryw7ojews.gz

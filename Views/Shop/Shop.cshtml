@@ -4,7 +4,7 @@
 }
 
 <div class="position-relative bg-dark text-white text-center py-5 mb-5"
-     style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://t3.ftcdn.net/jpg/03/22/30/46/360_F_322304683_7ysRarFkmy2osfPKTOYQv7qTPofKelfb.jpg'); 
+     style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); 
             background-size: cover; background-position: center; min-height: 300px; display: flex; align-items: center;">
     <div class="container">
         <h1 class="display-3 fw-bold mb-2">@Model.ShopName</h1>
@@ -46,26 +46,22 @@
 </div>
 
 <style>
-    /* Professional Polish */
     .category-btn {
         transition: all 0.2s ease;
         font-weight: 500;
         font-size: 0.9rem;
     }
 
-    /* Hover effect for categories */
     .category-btn:hover {
         background-color: #f8f9fa;
         color: #000;
         border-color: #adb5bd;
     }
 
-    /* Keep the active button distinctive */
     .category-btn.active {
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* Input focus styling */
     #shop-search:focus {
         border-color: #dee2e6;
         box-shadow: none;
